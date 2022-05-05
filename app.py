@@ -41,7 +41,7 @@ def delete():
         name = request.args.get('name')
         email = request.args.get('email')
         id = request.args.get('id')
-        cur = mysql.commection.cursor()
+        cur = mysql.connection.cursor()
         s = '''DELETE studentName = ?, email = ?, where studentID = ?;'''
         cur.execute(s,(name, email. id))
         mysql.connection.commit()
