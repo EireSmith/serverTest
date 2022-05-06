@@ -29,20 +29,18 @@ def add():
 def update():
    name = request.args.get('name')
    email = request.args.get('email')
-   id = reqest.args.get('id')
+   id = request.args.get('id')
    cur = mysql.connection.cursor() #create a conenction to sql instance
-   s = '''UPDATE studentName = ?, email = ?, where studentID = ?;'''
+   s = '''UPDATE students SET studentName = ?, email = ?, where studentID = ?;'''
    cur.execute(s,(name,email,id))
    mysql.connection.commit()
    return '{"Result":"Success"}'
 
 @app.route("/delete")
 def delete():
-        name = request.args.get('name')
-        email = request.args.get('email')
         id = request.args.get('id')
         cur = mysql.connection.cursor()
-        s = '''DELETE studentName = ?, email = ?, where studentID = ?;'''
+        s = '''DELETE * from students WHERE studentID = ?;'''
         cur.execute(s,(name, email, id))
         mysql.connection.commit()
         return '{"Result":"Success"}'
