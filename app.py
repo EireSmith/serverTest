@@ -45,13 +45,13 @@ def delete():
         mysql.connection.commit()
         return '{"Result":"Success"}'
 
-@app.route("/") #Default - Show Data
+@app.route("/") #Default Show Data
 def hello(): # Name of the method
   cur = mysql.connection.cursor() #create a connection to the SQL instance
   cur.execute('''SELECT * FROM students''') # execute an SQL statment
   rv = cur.fetchall() #Retreive all rows returend by the SQL statment
   Results=[]
-  for row in rv: #Format the Output Results and add to return string
+  for row in rv: #Format te Output Results and add to return string
     Result={}
     Result['Name']=row[0].replace('\n',' ')
     Result['Email']=row[1]
