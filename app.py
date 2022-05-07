@@ -30,7 +30,7 @@ def update():
    name = request.args.get('name')
    email = request.args.get('email')
    id = request.args.get('id')
-   cur = mysql.connection.cursor() #create a conenction to sql instanc
+   cur = mysql.connection.cursor() #create a conenction to sql instance
    s = '''UPDATE students SET studentName = ?, email = ?, where studentID = ?;'''
    cur.execute(s,(name,email,id))
    mysql.connection.commit()

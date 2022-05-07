@@ -4,31 +4,71 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Student Data</title>
+  
     <script>
-let doIt=()=>{
-  let tab=document.getElementById("tab1");
-  let rows=tab1.getElementsByTagName('tr');
-  fetch('https://robert.dbsprojects.ie:8080/')
-    .then(response => response.json())
-    .then(data => data.Results.forEach(
-      x=>{
-        let newRow=rows[0].cloneNode(true);
-        let divs=newRow.getElementsByTagName('td');
-        divs[0].innerHTML=x['ID'];
-        divs[1].innerHTML=x['Name'];
-        divs[2].innerHTML=x['Email'];
-        tab1.appendChild(newRow);
+      let show=()=>{
+        let tab=document.getElementById('tab1');
+        let rows=tab1.getElementsByClassName('tabRow');
+        fetch('https://robert.dbsprojects.ie:8080/')
+          .then(response => response.json())
+          .then(data => data.Results.forEach(
+            x=>{
+              let newRow=rows[0].cloneNode(true);
+              let divs=newRow.getElementsByTagName('td');
+              divs[0].innerHTML=x['ID'];
+              divs[1].innerHTML=x['Name'];
+              divs[2].innerHTML=x['Email'];
+              tab1.appendChild(newRow);
+            }
+          )
+        );
       }
-    )
-  );
-}
+      
+
+      
+      
     </script>
 </head>
+  
+  
 <body>
-    <button onClick="doIt(), this.disabled=true">Show Student Data</button>
-    This is where the results turn up: <br />
+  
+  <div>    
     <table id='tab1'>
-        <tr><td>ID</td><td>Name</td><td>Email</td></tr>
+      <tr>
+        <th>ID</th><th>Name</th> <th>Email</th>         
+      </tr>
+      <tr class="tabRow">
+        <td ></td><td></td><td></td>         
+      </tr>
+
     </table>
+  </div>
+  <BR/>
+  <div>
+    <label for="id">ID: </label>
+    <input type="text" placeholder="Enter ID">
+    <label for="name">Name: </label>
+    <input type="text" placeholder="Enter Name">
+    <label for="email">Email: </label>
+    <input type="text" placeholder="Enter Email">
+  <BR/>
+    <button id='addb'> Add</button>
+    <button id='updb'> Update</button>
+    <button id="delb"> Delete</button>
+    <button onClick="show()"> Show</button>
+  </div>
+  
 </body>
+  
+  <script>
+    baseURL = 'https://robert.dbsprojects.ie:8080/'
+    let delButton = document.getElementbyId("delb");
+    let deleteStudent = (event) => { 
+    let id=document.getElementById('id').value;
+    fetch(baseURL+'delete?id='+id).then((resp)=>{alert("Student Deleted");});
+      }
+      
+    delButton.addEventListener("click", deleteStudent);
+  </script>
 </html>
