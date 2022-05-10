@@ -19,7 +19,7 @@ def add():
   name = request.args.get('name')
   email = request.args.get('email')
   cur = mysql.connection.cursor() #create a connection to the SQL instance
-  s='''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(name,email)
+  s='''INSERT INTO students(studentName, email) VALUES('{}','{}') ;'''.format(name,email)
   cur.execute(s)
   mysql.connection.commit()
 
@@ -31,8 +31,8 @@ def update():
    email = request.args.get('email')
    id = request.args.get('id')
    cur = mysql.connection.cursor() #create a conenction to sql instance
-   s = '''UPDATE students SET studentName = ?, email = ?, where studentID = ?;'''
-   cur.execute(s,(name,email,id))
+   s = '''UPDATE students SET studentName = '{}', email = '{}', WHERE studentID = '{}' ;'''.format(name,email,id)
+   cur.execute(s)
    mysql.connection.commit()
    return '{"Result":"Success"}'
 
@@ -40,8 +40,8 @@ def update():
 def delete():
         id = request.args.get('id')
         cur = mysql.connection.cursor()
-        s = '''DELETE * from students WHERE studentID = ?;'''
-        cur.execute(s,(id))
+        s = '''DELETE * FROM students WHERE studentID = '{}' ;'''.format('id')
+        cur.execute(s)
         mysql.connection.commit()
         return '{"Result":"Success"}'
 
