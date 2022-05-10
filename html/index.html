@@ -28,16 +28,16 @@
 
       let deleteStudent=()=>{
         let delButton = document.getElementById("delb");
-        let id=document.getElementById('id').value;
-        fetch(baseURL+'delete?id='+id).then((resp)=>{alert("Student Deleted")});
+        let inputId=document.getElementById('id').value;
+        fetch(baseURL+'delete?id='+inputId).then((resp)=>{alert("Student Deleted")});
           }
 
       let updateStudent=()=>{
         let delButton = document.getElementById("updb");
-        let name=document.getElementById('name').value;
-        let email=document.getElementById('email').value;
-        let id=document.getElementById('id').value;
-        fetch(baseURL+'update?id='+id+'&name='+name'&email='+email).then((resp)=>{alert("Student Updated")});
+        let inputName=document.getElementById('name').value;
+        let inputEmail=document.getElementById('email').value;
+        let inputId=document.getElementById('id').value;
+        fetch(baseURL+'update?id='+inputId+'&name='+inputName'&email='+inputEmail).then((resp)=>{alert("Student Updated")});
          }
       
 </script>
