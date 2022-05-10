@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Student Database</title>
+    <title>Student Data</title>
   
-<script>
+    <script>
       let show=()=>{
         let tab=document.getElementById('tab1');
         let rows=tab1.getElementsByClassName('tabRow');
@@ -23,24 +23,27 @@
           )
         );
       }
+    </script>
+  <script>
       
-      baseURL = 'https://robert.dbsprojects.ie:8080/'
-
-      let deleteStudent=()=>{
-        let delButton = document.getElementById("delb");
-        let inputId=document.getElementById('id').value;
-        fetch(baseURL+'delete?id='+inputId).then((resp)=>{alert("Student Deleted")});
-          }
-
-      let updateStudent=()=>{
-        let delButton = document.getElementById("updb");
-        let inputName=document.getElementById('name').value;
-        let inputEmail=document.getElementById('email').value;
-        let inputId=document.getElementById('id').value;
-        fetch(baseURL+'update?id='+inputId+'&name='+inputName'&email='+inputEmail).then((resp)=>{alert("Student Updated")});
-         }
+    baseURL = 'https://robert.dbsprojects.ie:8080/'
+       
+    let deleteStudent=()=>{
+      let id=document.getElementById('id').value;
+      fetch(baseURL+'delete?id='+id).then((resp)=>{alert("Student Deleted")})};
+  </script>
+  
+  <script>
+    baseURL = 'https://robert.dbsprojects.ie:8080/'
+    let updateStudent=()=>{
+      let name=document.getElementById('name').value;
+      let email=document.getElementById('email').value;
+      let id=document.getElementById('id').value;
       
-</script>
+      fetch(baseURL+'update?id='+id+'&name='+name+'&email='+email).then((resp)=>{alert("Student Updated")});
+    }
+      
+  </script>
 </head>
   
   
