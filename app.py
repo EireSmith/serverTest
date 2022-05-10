@@ -40,7 +40,7 @@ def update():
 def delete():
         id = request.args.get('id')
         cur = mysql.connection.cursor()
-        s = '''DELETE * FROM students WHERE studentID = '{}' ;'''.format(id)
+        s = '''DELETE FROM students WHERE studentID = '{}' ;'''.format(id)
         cur.execute(s)
         mysql.connection.commit()
         return '{"Result":"Success"}'
