@@ -33,6 +33,7 @@ let show=()=>{
 let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length; 
             while(--rowCount) document.getElementById('tab1').deleteRow(rowCount)}
     
+
 function buttonActive(){ 
   let userEnteredStudent=studentInput.value 
   let userEnteredEmail=emailInput.value
@@ -57,6 +58,10 @@ let addStudent=()=>{
 
   fetch(baseURL+'add?name='+name+'&email='+email).then((resp)=>{alert("Student Added")});
  show();
+
+
+
+
 }
 
 let deleteStudent=()=>{
