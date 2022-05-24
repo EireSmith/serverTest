@@ -82,6 +82,12 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 
 
 
+
+.tabDiv::-webkit-scrollbar {
+  display: none;
+}
+
+
 #tab1 {
   width: 100%;
 
