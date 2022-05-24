@@ -19,9 +19,9 @@ let show = () => {
                             temp += "<td>"+x.ID+"</td>";
                             temp += "<td>"+x.Name+"</td>";
                             temp += "<td>"+x.Email+"</td>";
-                            temp += "<td>"+ "<button class='delBtn' onclick='deleteStudent("+x.ID+")'><i class='fa fa-ban'></i> </button>" +
+                            temp += "<td>"+ "<button class='updBtn' onclick='updateStudent("+x.ID+")'><i class='fa fa-pencil-square-o'> </button>" +
                             "</td>"
-                            temp += "<td>"+ "<button class='delBtn' onclick='updateStudent("+x.ID+")'><i class='fa fa-pen-to-square'></i> </button>" +
+                            temp += "<td>"+ "<button class='delBtn' onclick='deleteStudent("+x.ID+")'><i class='fa fa-ban'></i> </button>" +
                             "</td></tr>"
                             
                         })
