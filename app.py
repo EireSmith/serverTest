@@ -45,6 +45,8 @@ def delete():
         mysql.connection.commit()
         return '{"Result":"Success"}'
 
+
+
 @app.route("/") #Default Show Data
 def hello(): # Name of the method
   cur = mysql.connection.cursor() #create a connection to the SQL instance
