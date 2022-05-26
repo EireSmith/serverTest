@@ -38,7 +38,7 @@ let show = () => {
 
 
 
-let removeTable =()=>{var rowCount = document.getElementById('tbody').rows.length; 
+let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length; 
             while(rowCount) document.getElementById('tbody').remove();
         }; //causes an Uncaught TypeError: Cannot read properties of null (reading 'remove').  
            //However, it works in the desired manner. The commented function below doesn't 
