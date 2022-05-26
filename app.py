@@ -26,7 +26,7 @@ def login():
   password1 = request.form.get('password1')
   password2 = request.form.get('password2')
 
-  render render_template('login.html')
+  return render_template('login.html')
 
 
 
