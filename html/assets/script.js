@@ -26,7 +26,7 @@ let show = () => {
                             
                         })
                     
-                        document.getElementById("tabDiv").innerHTML = temp;
+                        document.getElementById("tab1").innerHTML = temp;
                     
                     }
                 }  
@@ -36,19 +36,18 @@ let show = () => {
 } //used with permission from Burak K.
 
 
-
+/*
 
 let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length; 
             while(rowCount) document.getElementById('tab1').remove();
-        }; //causes an Uncaught TypeError: Cannot read properties of null (reading 'remove').  
-           //However, it works in the desired manner. The commented function below doesn't 
-           //delete the first row of the table. 
+        };
+*/
 
-/*
 let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length; 
             while(--rowCount) document.getElementById('tab1').deleteRow(rowCount);}
+           //function won't delete the first row of the table. 
 
-*/
+
 
 
 function buttonActive(){ 
