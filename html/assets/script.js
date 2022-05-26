@@ -1,6 +1,6 @@
 
-const studentInput = document.querySelector(".inputField input[id='Student']");
-const emailInput = document.querySelector(".inputField input[id='Email']");
+const inputOne = document.querySelector(".inputField input[id='input1']");
+const inputTwo = document.querySelector(".inputField input[id='input2']");
 const addBtn = document.querySelector(".inputField button");
 const clearAllBtn = document.querySelector(".footer clear");
 baseURL = 'https://robert.dbsprojects.ie:8080/'
@@ -19,9 +19,9 @@ let show = () => {
                             temp += "<td>"+x.ID+"</td>";
                             temp += "<td>"+x.Name+"</td>";
                             temp += "<td>"+x.Email+"</td>";
-                            temp += "<td>"+ "<button class='updBtn' onclick='updateStudent("+x.ID+")'><i class='fa fa-pencil-square-o'> </button>" +
+                            temp += "<td id='updBtn'>"+ "<button class='updBtn' onclick='updateStudent("+x.ID+")'><i class='fa fa-pencil-square-o'> </button>" +
                             "</td>"
-                            temp += "<td>"+ "<button class='delBtn' onclick='deleteStudent("+x.ID+")'><i class='fa fa-ban'></i> </button>" +
+                            temp += "<td id='delBtn'>"+ "<button class='delBtn' onclick='deleteStudent("+x.ID+")'><i class='fa fa-ban'></i> </button>" +
                             "</td></tr>"
                             
                         })
@@ -33,42 +33,30 @@ let show = () => {
             )
         }
     )
-}
+} //used with permission from Burak K.
 
 
-/*
 
-let show=()=>{
-  removeTable();
-  let tab=document.getElementById('tab1');
-  let rows=tab1.getElementsByClassName('tabRow');
-  fetch('https://robert.dbsprojects.ie:8080/')
-    .then(response => response.json())
-    .then(data => data.Results.forEach(
-    x=> {let rowid = document.getElementById('tab1').attributes['rowid'];
-      document.getElementById('tab1').attributes['rowid'] = rowid + 1;
-      let newRow=rows[0].cloneNode(true);
-      let divs=newRow.getElementsByTagName('td');
-      newRow.attributes['rowid'] = rowid;
-      divs[0].innerHTML=x['ID'];
-      divs[1].innerHTML=x['Name'];
-      divs[2].innerHTML=x['Email'];
-      tab1.appendChild(newRow);
-    }
-  )
-  ); 
-}
-*/
 
 let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length; 
-            while(--rowCount) document.getElementById('tab1').deleteRow(rowCount)}
-    
+            while(rowCount) document.getElementById('tab1').remove();
+        }; //causes an Uncaught TypeError: Cannot read properties of null (reading 'remove').  
+           //However, it works in the desired manner. The commented function below doesn't 
+           //delete the first row of the table. 
+
+
+/*let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length; 
+            while(--rowCount) document.getElementById('tab1').deleteRow(rowCount);}
+*/
+
+
 
 function buttonActive(){ 
-  let userEnteredStudent=studentInput.value 
-  let userEnteredEmail=emailInput.value
-  
-  if(userEnteredStudent.trim() != 0  && userEnteredEmail != 0){
+
+  let userInput1 =input1.value 
+  let userInput2 =input2.value
+
+  if(userInput1.trim() != 0  && userInput2 != 0){
     addBtn.classList.add("active"); //active the add button
   } 
   else {
@@ -77,17 +65,18 @@ function buttonActive(){
  };
 
 
-studentInput.addEventListener("input", buttonActive)
-emailInput.addEventListener("input", buttonActive)
+input1.addEventListener("input", buttonActive)
+input2.addEventListener("input", buttonActive)
 
 
 
 let addStudent=()=>{
-  let name=document.getElementById('Student').value;
-  let email=document.getElementById('Email').value;
+  let name=document.getElementById('input1').value;
+  let email=document.getElementById('input2').value;
 
   fetch(baseURL+'add?name='+name+'&email='+email).then((resp)=>{console.log("Student Added")});
- show();
+  clearInput();
+  show();
 
 
 }
@@ -102,31 +91,14 @@ let deleteStudent = (id) => {
     })
 };
 
-/*let deleteStudent=()=>{
-  let id=document.getElementById('ID').value;
-  let x = 
-  fetch(baseURL+'delete?id='+id).then((resp)=>{alert("Student Deleted")})
-};
-
-*/
-
-
 let updateStudent = (id) => {
-    let updateName = document.getElementById('Student').value;
-    let updateEmail = document.getElementById('Email').value;
+    let updateName = document.getElementById('input1').value;
+    let updateEmail = document.getElementById('input2').value;
     fetch(baseURL+'update?id='+id+'&name='+updateName+'&email='+updateEmail)
     .then((resp) => {
         console.log('Student Deleted')
+        clearInput();
         show();
     });
 }
 
-
-/*let updateStudent=()=>{
-  let name=document.getElementById('name').value;
-  let email=document.getElementById('email').value;
-  let id=document.getElementById('id').value;
-
-  fetch(baseURL+'update?id='+id+'&name='+name+'&email='+email).then((resp)=>{alert("Student Updated")});
-}
-*/

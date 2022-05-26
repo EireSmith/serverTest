@@ -51,7 +51,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 .inputField input:focus{
   border-color: #ccffcc;
 }
-.inputField button, .clearbtn , .showbtn, .updBtn, .delBtn{
+.inputField button, .clearbtn , .showbtn, .updBtn, .loginBtn{
   width: 50px;
   height: 100%;
   border: none;
@@ -65,6 +65,24 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
   opacity: 1;
   transition: all 0.3s ease;
 }
+
+.delBtn{
+  width: 50px;
+  height: 100%;
+  border: none;
+  color: white;
+  margin-left: 5px;
+  font-size: 21px;
+  outline: none;
+  background: rgba(252,70,107,1);
+  cursor: pointer;
+  border-radius: 3px;
+  opacity: 1;
+  transition: all 0.3s ease;
+
+}
+
+
 
 .inputField button{
   opacity: .6;
@@ -107,6 +125,7 @@ tbody {
 
 }
 
+
 td  {
   list-style: none;
   height: 45px;
@@ -116,6 +135,13 @@ td  {
   border-radius: 20px;
   padding: 0 15px;
   cursor: default;
+}
+
+td#updBtn, #delBtn{
+  width:  5%;
+  background: none;
+  padding:  none;
+  margin: auto;
 }
 
 .wrapper .footer{

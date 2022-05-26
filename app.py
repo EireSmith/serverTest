@@ -1,11 +1,14 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request, render_template
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 import json
 mysql = MySQL()
+cur = mysql.connection.cursor() #create a connection to the SQL instance
+
 app = Flask(__name__)
 CORS(app)
+
+
 # My SQL Instance configurations
 # Change the HOST IP and Password to match your instance configurations
 app.config['MYSQL_USER'] = 'web'
@@ -14,11 +17,24 @@ app.config['MYSQL_DB'] = 'student'
 app.config['MYSQL_HOST'] = 'localhost' #for now
 mysql.init_app(app)
 
+
+@app.route("/login")
+def login():
+  usrename = request.form.get('username')
+  email = request.form.get('email')
+  name = request.form.get('name')
+  password1 = request.form.get('password1')
+  password2 = request.form.get('password2')
+
+  render render_template('login.html')
+
+
+
+
 @app.route("/add") #Add Student
 def add():
   name = request.args.get('name')
   email = request.args.get('email')
-  cur = mysql.connection.cursor() #create a connection to the SQL instance
   s='''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(name,email)
   cur.execute(s)
   mysql.connection.commit()
@@ -30,7 +46,6 @@ def update():
    name = request.args.get('name')
    email = request.args.get('email')
    id = request.args.get('id')
-   cur = mysql.connection.cursor() #create a conenction to sql instance
    s = '''UPDATE students SET studentName = '{}', email = '{}' WHERE studentID = '{}';'''.format(name,email,id)
    cur.execute(s)
    mysql.connection.commit()
@@ -39,7 +54,6 @@ def update():
 @app.route("/delete")
 def delete():
         id = request.args.get('id')
-        cur = mysql.connection.cursor()
         s = '''DELETE FROM students WHERE studentID = '{}' ;'''.format(id)
         cur.execute(s)
         mysql.connection.commit()
@@ -47,7 +61,6 @@ def delete():
 
 @app.route("/") #Default Show Data
 def hello(): # Name of the method
-  cur = mysql.connection.cursor() #create a connection to the SQL instance
   cur.execute('''SELECT * FROM students''') # execute an SQL statment
   rv = cur.fetchall() #Retreive all rows returend by the SQL statment
   Results=[]
