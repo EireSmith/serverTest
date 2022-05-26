@@ -3,7 +3,7 @@ from flask_mysqldb import MySQL
 from flask_cors import CORS
 import json
 mysql = MySQL()
-cur = mysql.connection.cursor() #create a connection to the SQL instance
+
 
 app = Flask(__name__)
 CORS(app)
@@ -36,6 +36,7 @@ def add():
   name = request.args.get('name')
   email = request.args.get('email')
   s='''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(name,email)
+  cur = mysql.connection.cursor() #create a connection to the SQL instance
   cur.execute(s)
   mysql.connection.commit()
 
@@ -47,6 +48,7 @@ def update():
    email = request.args.get('email')
    id = request.args.get('id')
    s = '''UPDATE students SET studentName = '{}', email = '{}' WHERE studentID = '{}';'''.format(name,email,id)
+   cur = mysql.connection.cursor() #create a connection to the SQL instance
    cur.execute(s)
    mysql.connection.commit()
    return '{"Result":"Success"}'
@@ -55,12 +57,14 @@ def update():
 def delete():
         id = request.args.get('id')
         s = '''DELETE FROM students WHERE studentID = '{}' ;'''.format(id)
+        cur = mysql.connection.cursor() #create a connection to the SQL instance
         cur.execute(s)
         mysql.connection.commit()
         return '{"Result":"Success"}'
 
 @app.route("/") #Default Show Data
 def hello(): # Name of the method
+  cur = mysql.connection.cursor() #create a connection to the SQL instance
   cur.execute('''SELECT * FROM students''') # execute an SQL statment
   rv = cur.fetchall() #Retreive all rows returend by the SQL statment
   Results=[]
