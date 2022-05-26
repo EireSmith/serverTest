@@ -26,7 +26,7 @@ let show = () => {
                             
                         })
                     
-                        document.getElementById("tab1").innerHTML = temp;
+                        document.getElementById("tabDiv").innerHTML = temp;
                     
                     }
                 }  
