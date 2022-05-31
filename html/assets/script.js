@@ -72,7 +72,6 @@ let addStudent=()=>{
   let email=document.getElementById('input2').value;
 
   fetch(baseURL+'add?name='+name+'&email='+email).then((resp)=>{console.log("Student Added")});
-  clearInput();
   show();
 
 
@@ -94,7 +93,6 @@ let updateStudent = (id) => {
     fetch(baseURL+'update?id='+id+'&name='+updateName+'&email='+updateEmail)
     .then((resp) => {
         console.log('Student Deleted')
-        clearInput();
         show();
     });
 }
