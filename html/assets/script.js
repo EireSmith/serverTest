@@ -48,21 +48,6 @@ let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length
             while(--rowCount) document.getElementById('tab1').deleteRow(rowCount);}
            //function won't delete the first row of the table. 
 
-function handleClick(event) {
-  event.preventDefault();
-
-  const input1 = document.getElementById('input1');
-  const input2 = document.getElementById('input2');
-
-  console.log(input1.value + input2.value);
-
-  input1.value = '';
-  input2.value = '';
-};
-
-addBtn.addEventListener('click', handleClick );
-updBtn.addEventListener('click', handleClick );
-
 function buttonActive(){ 
 
   let userInput1 =input1.value 

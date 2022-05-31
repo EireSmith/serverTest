@@ -17,17 +17,20 @@ app.config['MYSQL_DB'] = 'student'
 app.config['MYSQL_HOST'] = 'localhost' #for now
 mysql.init_app(app)
 
+ 
 
-@app.route("/login")
-def login():
-  usrename = request.form.get('username')
-  email = request.form.get('email')
-  name = request.form.get('name')
-  password1 = request.form.get('password1')
-  password2 = request.form.get('password2')
-
-  return render_template('login.html')
-
+#@app.route("/login")
+#def login():
+ # username = request.form.get('username')
+  #email = request.form.get('email')
+  #name = request.form.get('name')
+  #password1 = request.form.get('password1')
+  #password2 = request.form.get('password2')
+  #s='''INSERT INTO user(userName, email, password) VALUES('{}','{}','{}');'''.format(userName,email,password)
+  #cur = mysql.connection.cursor() #create a connection to the SQL instance
+  #cur.execute(s)
+  #mysql.connection.commit()
+  #return render_template('login.html')
 
 
 
