@@ -37,16 +37,6 @@ let show = () => {
 } //used with permission from Burak K.
 
 
-/*
-
-let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length; 
-            while(rowCount) document.getElementById('tab1').remove();
-        };
-*/
-
-let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length; 
-            while(--rowCount) document.getElementById('tab1').deleteRow(rowCount);}
-           //function won't delete the first row of the table. 
 
 function buttonActive(){ 
 
