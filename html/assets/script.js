@@ -2,6 +2,7 @@
 const inputOne = document.querySelector(".inputField input[id='input1']");
 const inputTwo = document.querySelector(".inputField input[id='input2']");
 const addBtn = document.querySelector(".inputField button");
+const updBtn = document.querySelector("#tab1 updBtn")
 const clearAllBtn = document.querySelector(".footer clear");
 baseURL = 'https://robert.dbsprojects.ie:8080/'
 
@@ -47,15 +48,27 @@ let removeTable =()=>{var rowCount = document.getElementById('tab1').rows.length
             while(--rowCount) document.getElementById('tab1').deleteRow(rowCount);}
            //function won't delete the first row of the table. 
 
+function handleClick(event) {
+  event.preventDefault();
 
+  const input1 = document.getElementById('input1');
+  const input2 = document.getElementById('input2');
 
+  console.log(input1.value + input2.value);
+
+  input1.value = '';
+  input2.value = '';
+};
+
+addBtn.addEventListener('click', handleClick );
+updBtn.addEventListener('click', handleClick );
 
 function buttonActive(){ 
 
   let userInput1 =input1.value 
   let userInput2 =input2.value
 
-  if(userInput1.trim() != 0  && userInput2 != 0){
+  if(userInput1.trim() != ''  && userInput2 != ''){
     addBtn.classList.add("active"); //active the add button
   } 
   else {
